@@ -1,5 +1,5 @@
 # Description
-A Civilization IV mapscript which procedurally generates a quasi-realistic map resembling the "Chinese Unification" Mod in Warlords.
+A Civilization IV mapscript which procedurally generates a quasi-realistic map resembling the static map used in the Warlords "Chinese Unification" Mod.
 
 
 ![StandardSizeThumb](png/temperate.png)
@@ -69,8 +69,6 @@ This mapscript supports climate options.
 - Low: Generates a crude shoreline, and 3 great rivers running eastwards.
 <img src="png/accuracy_Low.png" width="300">
 
-
-
 ## River Options
 The mapscript manually draws important rivers as regular rivers or 1-tile waterways with land bridges.
 - Great River Options: Option to draw the Yellow and Long rivers (and the pseudo-Huai in Low-accuracy settings) as bridged waterways, bridgeless waterways, or as regular rivers.
@@ -78,7 +76,8 @@ The mapscript manually draws important rivers as regular rivers or 1-tile waterw
 - :Lesser River Options: Draw minor rivers manually through preassigned coordinates, or disable it and turn up random river generation density.
 
 ## Starting Location Options
-- Fixed (Shuffle): Randomly places all players within 6 primary and 4 secondary locations in order of priority. Remaining players are placed with default methods. If desired, one can force specific civilizations to spawn in specific regions by adding them to civ_mapping under _assign_all_starting_plots().
+- Fixed (Shuffle): Randomly places all players within 6 primary and 4 secondary locations in order of priority. Remaining players are placed with default methods. 
+	- If desired, one can force specific civilizations to spawn in specific regions by adding them to civ_mapping under _assign_all_starting_plots().
 - Vanilla: Default behavior
 
 Starting regions are roughly based on major states in the Chinese Spring-and-Autumn and Warring States Eras.
