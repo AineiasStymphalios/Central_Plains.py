@@ -3,8 +3,6 @@ A Civilization IV mapscript which procedurally generates a quasi-realistic map r
 
 
 ![StandardSizeThumb](png/temperate.png)
-![StandardSizeThumb](png/accuracy_medium.png)
-![StandardSizeThumb](png/accuracy_Low.png)
 
 <details>
 <summary><h3>Screenshots</h3></summary>
@@ -42,24 +40,31 @@ This mapscript should work with most vanilla-like mods (e.g. BUG, BUFFY, AdvCiv 
 The script generates maps with 1:1 ratio.
 | Map Size | Dimensions |
 | :--- | :--- |
-| Duel | 5×5 |
-| Tiny | 6×6 |
-| Small | 8×8 |
-| Standard | 10×10 |
-| Large | 11×11 |
-| Huge | 12×12 |
+| Duel | 20×20 |
+| Tiny | 24×24 |
+| Small | 32×32 |
+| Standard | 40×40 |
+| Large | 44×44 |
+| Huge | 48×48 |
+(This may need adjustment)
 
 ## Climate Options
-This mapscript supports climate options. See below.
+This mapscript supports climate options.
 
+<details>
+<summary><h3>Screenshots</h3></summary>
 <img src="png/temperate.png">
 <img src="png/arid.png">
 <img src="png/cold.png">
 <img src="png/rocky.png">
 <img src="png/tropical.png">
+</details>
 
 ## Geographic Accuracy Options
 - High: Generates all geometric fractal regions and rivers (default).
+<img src="png/temperate.png" width="500">
+<img src="png/accuracy_medium.png" width="500">
+<img src="png/accuracy_Low.png" width="500">
 - Medium: Generates the basic shorelines and the same rivers.
 - Low: Generates a crude shoreline, and 3 great rivers running eastwards.
 
@@ -75,6 +80,7 @@ The mapscript manually draws important rivers as regular rivers or 1-tile waterw
 
 Starting regions are roughly based on major states in the Chinese Spring-and-Autumn and Warring States Eras.
 ![StandardSizeThumb](png/SpawnRegions.png)
+ <img src="png/tropical.png" width="500">
 
 ## Resource Options
 The mapscript has three resource related options.
