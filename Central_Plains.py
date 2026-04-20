@@ -77,8 +77,9 @@ Below are its features:
 - AineiasStymph, March 28, 2026
 ##############################################################################
 CENTRAL PLAINS NOTES
-This mapscript is based on my Mediterranean_sea.py.
-Below are its new features:
+
+This mapscript is based on my Mediterranean_sea.py, which was based on Earth2.
+Below are new features since Mediterranean_sea:
 - Improved MultilayeredFractal generator
     - Renamed to GeometricFractal
     - Now takes center X and Y for region inputs.
@@ -88,7 +89,8 @@ Below are its new features:
     - Generates rivers / waterways through coordinate inputs
     - Option for landbridges in waterways.
     - *Mostly* functional river merges
-- AineiasStymph, 
+    
+- AineiasStymph, April 4, 2026
 ##############################################################################
 '''
 
@@ -103,9 +105,6 @@ def isAdvancedMap():
     return 0
 
 
-# -----------------------------------------------------------------------------
-# Custom Options
-# -----------------------------------------------------------------------------
 # -----------------------------------------------------------------------------
 # Custom Options
 # -----------------------------------------------------------------------------
@@ -191,7 +190,7 @@ def getCustomMapOptionDefault(argsList):
     if index == 5: return 0 # Generated
     if index == 6: return 2 # Disabled
     if index == 7: return 0 # High accuracy
-    if index == 8: return 1 # starts
+    if index == 8: return 0 # starts
     return 0
 
 # -----------------------------------------------------------------------------
