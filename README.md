@@ -27,7 +27,8 @@ C:\Program Files\Firaxis Games\Civilization 4\Beyond the Sword\PublicMaps
 ```
 C:\Program Files (x86)\Steam\steamapps\common\Sid Meier's Civilization IV Beyond the Sword\Beyond the Sword\PublicMaps
 ```
-3. Load Civ4. Select Central_Plains through "PLAY NOW" or "CUSTOM GAME."
+3. Load Civ4. Select Central_Plains through *PLAY NOW* or *CUSTOM GAME.*
+
 
 ## Version support
 This mapscript supports Civ4 Beyond the Sword, Warlords, and Vanilla.
@@ -37,7 +38,7 @@ This mapscript should work with most vanilla-like mods (e.g. BUG, BUFFY, AdvCiv 
 
 # Features
 ## Map Dimensions
-The script generates maps with 1:1 ratio.
+The script generates maps with 1:1 ratio. (This may need adjustment)
 | Map Size | Dimensions |
 | :--- | :--- |
 | Duel | 20×20 |
@@ -46,7 +47,7 @@ The script generates maps with 1:1 ratio.
 | Standard | 40×40 |
 | Large | 44×44 |
 | Huge | 48×48 |
-(This may need adjustment)
+
 
 ## Climate Options
 This mapscript supports climate options.
@@ -62,11 +63,13 @@ This mapscript supports climate options.
 
 ## Geographic Accuracy Options
 - High: Generates all geometric fractal regions and rivers (default).
-<img src="png/temperate.png" width="500">
-<img src="png/accuracy_medium.png" width="500">
-<img src="png/accuracy_Low.png" width="500">
+<img src="png/temperate.png" width="300">
 - Medium: Generates the basic shorelines and the same rivers.
+<img src="png/accuracy_medium.png" width="300">
 - Low: Generates a crude shoreline, and 3 great rivers running eastwards.
+<img src="png/accuracy_Low.png" width="300">
+
+
 
 ## River Options
 The mapscript manually draws important rivers as regular rivers or 1-tile waterways with land bridges.
@@ -79,8 +82,7 @@ The mapscript manually draws important rivers as regular rivers or 1-tile waterw
 - Vanilla: Default behavior
 
 Starting regions are roughly based on major states in the Chinese Spring-and-Autumn and Warring States Eras.
-![StandardSizeThumb](png/SpawnRegions.png)
- <img src="png/tropical.png" width="500">
+ <img src="png/SpawnRegions.png" width="500">
 
 ## Resource Options
 The mapscript has three resource related options.
