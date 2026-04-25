@@ -96,8 +96,8 @@ Below are new features since Mediterranean_sea:
 
     
 def getDescription():
-    desc = "A procedurally generated Chinese Central Plains map with realistic geography and climate. "
-    desc += ". "
+    desc = "A procedurally generated Chinese Central Plains map, inspired by the Chinese Unification mod-scenario in Warlords."
+    desc += "Features options for geography and climate."
     return desc
 
 def isAdvancedMap():
@@ -630,7 +630,9 @@ class TerrainGenerator(CvMapGeneratorUtil.TerrainGenerator):
         iPlains = self.gc.getInfoTypeForString("TERRAIN_PLAINS")
         iDesert = self.gc.getInfoTypeForString("TERRAIN_DESERT")
         iGrass = self.gc.getInfoTypeForString("TERRAIN_GRASS")
-
+    
+        iRoll = self.mapRand.get(100, "Terrain Scatter")
+        
         # 4. TERRAIN MATRIX LOGIC
         # Temperature Bands: Cold (< 0.2), Neutral (0.2 - 0.6), Hot (> 0.6)
         # Moisture Bands: Dry (< fDesertThreshold), Neutral (fDesert to fGrass), Wet (> fGrassThreshold)
@@ -647,26 +649,53 @@ class TerrainGenerator(CvMapGeneratorUtil.TerrainGenerator):
             if moisture < self.fDesertThreshold:
                 return iDesert  # Dry/Neutral = Desert
             elif moisture < self.fGrassThreshold:
-                # Neutral/Neutral = Plains
+                # Neutral/Neutral = Majority Plains
+                fRange = self.fGrassThreshold - self.fDesertThreshold
+                fRelativeWetness = (moisture - self.fDesertThreshold) / fRange
+                iGrassChance = int(20 * fRelativeWetness) # Max 20% Grass at the edge
+                
+                if iRoll < iGrassChance:
+                    return iGrass
                 return iPlains
-                # # Neutral/Neutral = Plains-Grass Mix
-                # # We use a sub-threshold to split the band
-                # fMidNeutral = (self.fDesertThreshold + self.fGrassThreshold) / 2.0
-                # if moisture > fMidNeutral:
-                    # return iGrass
-                # else:
-                    # return iPlains
+
             else:
-                return iGrass   # Wet/Neutral = Grass
+                # Wet Moisture / Neutral Temp: Majority Grassland
+                # Scatter some Plains as it gets drier (near the 0.5 threshold)
+                fRange = 1.0 - self.fGrassThreshold
+                fExtraWetness = (moisture - self.fGrassThreshold) / fRange
+                # 40% chance of Plains at moisture 0.5, dropping to 0% at moisture 1.0
+                iPlainsChance = int(40 * (1.0 - fExtraWetness))
+                
+                if iRoll < iPlainsChance:
+                    return iPlains
+                return iGrass
 
         else:
             # --- HOT ZONE ---
             if moisture < self.fDesertThreshold:
                 return iDesert  # Dry/Hot = Desert
             elif moisture < self.fGrassThreshold:
-                return iPlains # Dry/Neutral = Plains
+                # Neutral Moisture / Hot Temp: Transition zone
+                # High chance of Grassland scatter because it's hot
+                fRange = self.fGrassThreshold - self.fDesertThreshold
+                fRelativeWetness = (moisture - self.fDesertThreshold) / fRange
+                iGrassChance = int(50 * fRelativeWetness) # Up to 50% Grassland
+                
+                if iRoll < iGrassChance:
+                    return iGrass
+                return iPlains
+            
             else:
-                return iGrass   # Dry/Hot, Neutral/Hot, or Wet/Hot = Grass
+                # Wet Moisture / Hot Temp: Lush Grassland
+                # Scatter fewer Plains than the Neutral Temp zone
+                fRange = 1.0 - self.fGrassThreshold
+                fExtraWetness = (moisture - self.fGrassThreshold) / fRange
+                # 25% chance of Plains at moisture 0.5, dropping to 0% at moisture 1.0
+                iPlainsChance = int(25 * (1.0 - fExtraWetness))
+                
+                if iRoll < iPlainsChance:
+                    return iPlains
+                return iGrass
 
 def generateTerrainTypes():
     NiTextOut("Generating Terrain (Python Central Plains) ...")
